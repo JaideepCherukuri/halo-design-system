@@ -1,4 +1,3 @@
-import React from 'react';
 import DitheredImage from './DitheredImage';
 import { useAssetPath } from '../hooks/useAssetPath';
 import './MissionCard.css';
