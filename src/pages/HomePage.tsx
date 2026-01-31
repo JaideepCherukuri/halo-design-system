@@ -207,18 +207,20 @@ export default function HomePage() {
             {/* Hero Section */}
             <section className="hero">
                 {/* Full-screen Dithering Background */}
-                <div className="hero-dither-bg">
-                    <Dithering
-                        style={{ height: '100%', width: '100%' }}
-                        colorBack="#F4F7EE"
-                        colorFront="#A3BD6A"
-                        shape="wave"
-                        type="4x4"
-                        size={3}
-                        scale={0.8}
-                        rotation={0}
-                        speed={0.1}
-                    />
+                <div className="hero-dither-bg" style={{ backgroundColor: '#F4F7EE' }}>
+                    <div style={{ opacity: activeSection !== -1 ? 1 : 0, transition: 'opacity 1.5s ease' }}>
+                        <Dithering
+                            style={{ height: '100%', width: '100%' }}
+                            colorBack="#F4F7EE"
+                            colorFront="#A3BD6A"
+                            shape="wave"
+                            type="4x4"
+                            size={3}
+                            scale={0.8}
+                            rotation={0}
+                            speed={0.1}
+                        />
+                    </div>
                 </div>
                 <div className="hero-fade-bottom" />
 
