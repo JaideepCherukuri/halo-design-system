@@ -1,0 +1,85 @@
+/* Mission Card Styles */
+.mission-card-container {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: var(--space) var(--padding);
+    display: flex;
+    justify-content: center;
+}
+
+.mission-card {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Mobile first */
+    background-color: var(--bg-color);
+    /* match page bg #F4F7EE */
+    /* Agentic bg */
+    border: 1px solid var(--border-color);
+    /* #CBD5A0 */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13, 31, 24, 0.08);
+    /* Subtle shadow using mission dark color */
+    width: 100%;
+}
+
+.mission-content {
+    padding: calc(var(--space) * 1.5);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+}
+
+.mission-text {
+    font-family: var(--font-body, 'PP Neue Montreal', system-ui, sans-serif);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-muted);
+    /* Gray text */
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.mission-text .highlight-text {
+    font-family: var(--font-display, 'FK Raster', system-ui, sans-serif);
+    color: var(--accent-color);
+    /* Green highlight */
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.mission-visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #0D1F18;
+    /* Fallback */
+    overflow: hidden;
+}
+
+.mission-visual canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+/* Desktop Split Layout */
+@media (min-width: 768px) {
+    .mission-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .mission-content {
+        flex: 1;
+        padding: calc(var(--space) * 2);
+    }
+
+    .mission-visual {
+        flex: 1;
+        aspect-ratio: auto;
+        min-height: 100%;
+    }
+}

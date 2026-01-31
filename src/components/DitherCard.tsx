@@ -6,6 +6,7 @@ interface DitherCardProps {
     subtitle?: string;
     className?: string;
     mode?: 'light' | 'dark' | 'agentic';
+    imageName?: string;
 }
 
 // Asset folder path for cards
@@ -13,12 +14,13 @@ const CARDS_PATH = '/assets/cards';
 
 export default function DitherCard({
     title = "Agentic Flow",
-    subtitle = "System Aligned",
+    subtitle,
     className = "",
-    mode = 'dark'
+    mode = 'dark',
+    imageName
 }: DitherCardProps) {
     // Format-agnostic image loading - automatically finds webp, jpg, png, etc.
-    const imagePath = useAssetPath(CARDS_PATH, mode);
+    const imagePath = useAssetPath(CARDS_PATH, imageName || mode);
 
     const theme = {
         dark: {
@@ -104,9 +106,11 @@ export default function DitherCard({
                 <h3 className="dither-card-title" style={{ color: theme.text }}>
                     {title}
                 </h3>
-                <p className="dither-card-subtitle" style={{ color: theme.subtext }}>
-                    {subtitle}
-                </p>
+                {subtitle && (
+                    <p className="dither-card-subtitle" style={{ color: theme.subtext }}>
+                        {subtitle}
+                    </p>
+                )}
             </div>
         </div>
     );
