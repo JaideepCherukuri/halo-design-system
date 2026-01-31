@@ -47,11 +47,6 @@ export default function DitheredImage({
                 const container = containerRef.current;
                 if (!canvas || !container) return;
 
-                // Set canvas dimensions to match container
-                const rect = container.getBoundingClientRect();
-                const displayWidth = rect.width || ditheredCanvas.width;
-                const displayHeight = rect.height || ditheredCanvas.height;
-
                 canvas.width = ditheredCanvas.width;
                 canvas.height = ditheredCanvas.height;
                 canvas.style.width = '100%';

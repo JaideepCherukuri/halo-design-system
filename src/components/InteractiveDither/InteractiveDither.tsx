@@ -260,7 +260,7 @@ function DitheredWaves({
                 />
             </mesh>
 
-            <EffectComposer disableNormalPass>
+            <EffectComposer enableNormalPass={false}>
                 <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
             </EffectComposer>
 

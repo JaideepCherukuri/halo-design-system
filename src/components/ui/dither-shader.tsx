@@ -17,14 +17,15 @@ export const DitherShader: FC<DitherShaderProps> = ({
     src,
     gridSize = 1,
     ditherMode = "bayer",
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    colorMode = "duotone",
+    colorMode: _colorMode = "duotone",
     primaryColor = "#000",
     secondaryColor = "#fff",
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    threshold = 0.5,
+    threshold: _threshold = 0.5,
     className = "",
 }) => {
+    // These props are kept for API compatibility but not used in current implementation
+    void _colorMode;
+    void _threshold;
     // Map props to the underlying library props
     // ditherMode 'bayer' usually corresponds to standard ordered dither like '8x8' in some libs,
     // we'll default to '8x8' if bayer is passed, or pass through if it matches known types.
