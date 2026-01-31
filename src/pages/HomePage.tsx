@@ -11,10 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Header Logo with Liquid Metal effect - same pattern as HaloLogo but sized for header
 function HeaderLogo() {
-    const logoRef = React.useRef<SVGSVGElement>(null);
-    const [scale, setScale] = React.useState(0.015); // Smaller default for header
+    const logoRef = useRef<SVGSVGElement>(null);
+    const [scale, setScale] = useState(0.015); // Smaller default for header
 
-    React.useEffect(() => {
+    useEffect(() => {
         const calculateScale = () => {
             if (!logoRef.current) return;
             const logoWidth = logoRef.current.getBoundingClientRect().width;
