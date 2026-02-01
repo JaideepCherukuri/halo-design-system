@@ -59,10 +59,11 @@
     overflow: hidden;
 }
 
-.mission-visual canvas {
-    width: 100% !important;
-    height: 100% !important;
+.mission-visual .mission-static-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* Desktop Split Layout */

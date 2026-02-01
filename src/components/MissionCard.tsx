@@ -1,19 +1,7 @@
-import DitheredImage from './DitheredImage';
-import { useAssetPath } from '../hooks/useAssetPath';
+
 import './MissionCard.css';
 
-const DUOTONE_PATH = '/assets/duotone';
-
 export default function MissionCard() {
-    // Reuse the agentic image from DuotoneSamples
-    const agenticImage = useAssetPath(DUOTONE_PATH, 'agentic');
-
-    // Agentic Theme Colors
-    const theme = {
-        highlight: '#A3BD6A',    // Soft Sage/Olive Highlight
-        shadow: '#0D1F18',       // Deep Green Shadow
-    };
-
     return (
         <section className="mission-card-container">
             <div className="mission-card">
@@ -23,18 +11,13 @@ export default function MissionCard() {
                     </h2>
                 </div>
                 <div className="mission-visual">
-                    {agenticImage && (
-                        <DitheredImage
-                            src={agenticImage}
-                            crunch={3}
-                            primaryColor={theme.highlight}
-                            secondaryColor={theme.shadow}
-                            alt="Agentic Economy Infrastructure"
-                        />
-                    )}
+                    <img
+                        src="/images/missionduotone.png"
+                        alt="Agentic Economy Infrastructure"
+                        className="mission-static-image"
+                    />
                 </div>
             </div>
         </section>
     );
 }
-
