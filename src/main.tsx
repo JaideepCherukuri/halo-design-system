@@ -28,8 +28,8 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/branding" element={<BrandingPage />} />
         </Routes>
       </Suspense>

@@ -293,7 +293,7 @@ export default function HomePage() {
             {/* Fixed Header */}
             <header className="site-header">
                 <div className="halftone-overlay" aria-hidden="true" />
-                <Link to="/home" className="header-brand">
+                <Link to="/" className="header-brand">
                     <HeaderLogo />
                 </Link>
                 <nav className="header-nav">
