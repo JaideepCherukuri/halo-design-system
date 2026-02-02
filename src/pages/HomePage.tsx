@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Dithering, LiquidMetal } from '@paper-design/shaders-react';
 import MissionCard from '../components/MissionCard';
-import DitherCard from '../components/DitherCard';
+import DarkBanner from '../components/DarkBanner';
 import './HomePage.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -62,9 +62,8 @@ function HeaderLogo() {
                 distortion={0.07}
                 contour={0.4}
                 scale={1}
-                rotation={0}
+                rotation={45}
                 shape="diamond"
-                angle={0}
                 image="https://workers.paper.design/file-assets/01KG85R3HYDAAEWD7AE7ZCGNTF/01KG812P9Q3TZH32MBX86NF9M5.svg"
                 frame={4543891.499999572}
                 colorBack="#00000000"
@@ -298,22 +297,13 @@ export default function HomePage() {
                     <HeaderLogo />
                 </Link>
                 <nav className="header-nav">
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            const element = document.getElementById('manifesto');
-                            if (element) {
-                                element.scrollIntoView({ behavior: 'smooth' });
-                                // Explicitly clean URL if hash exists
-                                window.history.pushState("", document.title, window.location.pathname + window.location.search);
-                            }
-                        }}
+                    <span
                         className="nav-link"
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit', fontFamily: 'inherit', padding: 0 }}
+                        style={{ cursor: 'default', opacity: 0.6 }}
                     >
-                        Memo
-                    </button>
-                    <a href="mailto:contactus@halofy.ai" className="nav-link nav-link--cta">Contact</a>
+                        Docs (soon)
+                    </span>
+                    <a href="mailto:contactus@halofy.ai" className="nav-link nav-link--cta">Let's Chat!</a>
                 </nav>
             </header>
 
@@ -343,7 +333,7 @@ export default function HomePage() {
                         AGENTIC<br />BANKING OS
                     </h1>
                     <p className="hero-tagline">
-                        Building the next gen financial rails for agentic economy
+                        Building the bridge between legacy rails and the agentic economy
                     </p>
                 </div>
             </section>
@@ -356,7 +346,7 @@ export default function HomePage() {
                 {/* Dot Navigation Indicators */}
                 <nav className="scroll-indicator" aria-label="Section navigation">
                     <ul>
-                        <li><a href="#section-evolution" className={activeSection === 0 ? 'active' : ''}><span className="sr-only">Evolution of Payments</span></a></li>
+                        <li><a href="#section-evolutiEvolution of Paymentson" className={activeSection === 0 ? 'active' : ''}><span className="sr-only"></span></a></li>
                         <li><a href="#section-fragmentation" className={activeSection === 1 ? 'active' : ''}><span className="sr-only">Fragmentation Problem</span></a></li>
                         <li><a href="#section-builders" className={activeSection === 2 ? 'active' : ''}><span className="sr-only">Builders Should Build</span></a></li>
                         <li><a href="#section-halo" className={activeSection === 3 ? 'active' : ''}><span className="sr-only">Introducing Halo</span></a></li>
@@ -366,27 +356,19 @@ export default function HomePage() {
                 {/* Section 1: Evolution of Payments */}
                 <section id="section-evolution" className="snap-section">
                     <div className="snap-content">
-                        <h2 className="section-title">The Evolution of Payments</h2>
+                        <h2 className="section-title">The Next Commerce Paradigm</h2>
 
                         <div className="section-text">
                             <p className="manifesto-paragraph">
-                                <strong>Era I: Physical Commerce</strong>. Cash changed hands and cards swiped at terminals, with payments tethered to physical presence.
+                                Commerce has evolved through distinct waves from cash and card swipes tethered to physical presence, to e-commerce platforms like PayPal and Stripe enabling "buy now" from anywhere, to QR codes, real-time networks, and stablecoins making payments instant and borderless. Yet every generation still required one thing: <span className="text-highlight">human intent at the moment of transaction</span>.
                             </p>
 
                             <p className="manifesto-paragraph">
-                                <strong>Era II: Digital Commerce</strong>. E-commerce moved payments online through PayPal, Stripe, and digital wallets, letting humans click "buy now" from anywhere.
-                            </p>
-
-                            <p className="manifesto-paragraph">
-                                <strong>Era III: Instant & Programmable Money</strong>. QR codes, real-time networks, and stablecoins made payments faster and borderless, but still required human intent at the moment of transaction.
-                            </p>
-
-                            <p className="manifesto-paragraph">
-                                <strong>Era IV: Agentic Commerce</strong>. AI agents don't wait for clicks. They negotiate, transact, and settle autonomously. McKinsey projects agentic commerce will drive <span className="text-highlight">$5 trillion in annual sales by 2030</span>. But the infrastructure isn't ready.
+                                Now, AI agents are changing that. They don't wait for clicks they negotiate, transact, and settle autonomously. McKinsey projects autonomous commerce will drive <span className="text-highlight">$5 trillion in annual sales by 2030</span>.
                             </p>
 
                             <p className="manifesto-paragraph manifesto-paragraph--emphasis">
-                                Modern financial infrastructure is not built for the Agent Economy.
+                                Modern financial infrastructure is not built for the Agentic Economy.
                             </p>
                         </div>
                     </div>
@@ -399,11 +381,15 @@ export default function HomePage() {
 
                         <div className="section-text">
                             <p className="manifesto-paragraph">
-                                The agentic commerce space is fracturing before it scales. Each protocol solves part of the problem: payments, identity, settlement. Yet <span className="text-highlight">none interoperate</span>. Builders face a maze of incompatible standards: multiple SDKs, fragmented compliance requirements, no unified approach to delegated authentication, and infrastructure debt that compounds with every new protocol.
+                                AI is evolving at breakneck speed. But the infrastructure beneath it? <span className="text-highlight">Fractured.</span>
+                            </p>
+
+                            <p className="manifesto-paragraph">
+                                Multiple protocols. Multiple standards. Multiple payment methods.
                             </p>
 
                             <p className="manifesto-paragraph manifesto-paragraph--emphasis">
-                                The ecosystem is siloed. Builders are stuck stitching together rails that were never designed to work together.
+                                The ecosystem isn't just fragmented, it's siloed.
                             </p>
                         </div>
                     </div>
@@ -416,7 +402,15 @@ export default function HomePage() {
 
                         <div className="section-text">
                             <p className="manifesto-paragraph">
-                                Agentic builders are creating the future through autonomous ticketing, AI procurement agents, voice-enabled checkouts. Their focus should be training models and perfecting user experience, <span className="text-highlight">not navigating authentication flows, managing tokenization and compliance, building reconciliation layers, or maintaining audit trails</span>.
+                                Agentic builders are translating productivity into profit.
+                            </p>
+
+                            <p className="manifesto-paragraph">
+                                They're optimizing latency, memory, token costs, RAG quality, discoverability, reliability, orchestration, and governance.
+                            </p>
+
+                            <p className="manifesto-paragraph">
+                                Meanwhile, they're <span className="text-highlight">still managing authentication, compliance, reconciliation, audit trails, and state tracking manually</span>.
                             </p>
 
                             <p className="manifesto-paragraph manifesto-paragraph--emphasis">
@@ -429,16 +423,13 @@ export default function HomePage() {
                 {/* Section 4: Introducing Halo */}
                 <section id="section-halo" className="snap-section">
                     <div className="snap-content">
-                        <DitherCard
-                            title="Introducing Halo"
-                            mode="agentic"
-                            imageName="halopic"
-                            className="intro-card"
-                        />
+                        <div className="halo-dark-banner">
+                            <DarkBanner />
+                        </div>
 
                         <div className="section-text">
                             <p className="manifesto-paragraph manifesto-paragraph--lead">
-                                A universal interoperability layer enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
+                                A universal interoperability layer for agentic commerce protocols, enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
                             </p>
 
                             <p className="manifesto-paragraph">
@@ -447,7 +438,7 @@ export default function HomePage() {
 
                             <h3 className="subsection-title">What Halo provides:</h3>
                             <ul className="feature-list">
-                                <li><strong>Universal entity vault</strong> for delegated authentication and identity</li>
+                                <li><strong>Universal Vault</strong> for delegated authentication, identity &amp; payment</li>
                                 <li><strong>Protocol-agnostic middleware</strong> translating between commerce standards (UCP, ACP, x402, APP)</li>
                                 <li><strong>Immutable audit trail</strong> with privacy-preserving reconciliation</li>
                             </ul>
@@ -484,12 +475,12 @@ export default function HomePage() {
                     </div>
                     <div className="footer-right">
                         <div className="footer-social">
-                            <a href="https://twitter.com/halofy_ai" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="X (Twitter)">
+                            <span className="social-link" aria-label="X (Twitter)">
                                 <XIcon />
-                            </a>
-                            <a href="https://linkedin.com/company/halofy-ai" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
+                            </span>
+                            <span className="social-link" aria-label="LinkedIn">
                                 <LinkedInIcon />
-                            </a>
+                            </span>
                         </div>
                     </div>
                 </div>

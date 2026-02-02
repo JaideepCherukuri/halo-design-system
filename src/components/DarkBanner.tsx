@@ -10,7 +10,7 @@ export default function DarkBanner() {
                 className="banner-dithering banner-dithering--dark"
                 style={{ objectFit: 'cover' }}
             />
-            <HaloLogo variant="dark" />
+            <HaloLogo variant="dark" showIntroducing />
             <img
                 src="/assets/banners/image-dithering-dark.jpg"
                 alt=""
