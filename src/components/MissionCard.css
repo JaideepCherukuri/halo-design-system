@@ -35,7 +35,7 @@
     font-family: var(--font-body, 'PP Neue Montreal', system-ui, sans-serif);
     font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.4;
     color: var(--text-muted);
     /* Gray text */
     margin: 0;

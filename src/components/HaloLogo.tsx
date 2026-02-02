@@ -5,9 +5,10 @@ import './Banner.css';
 
 interface HaloLogoProps {
     variant: 'light' | 'dark';
+    showIntroducing?: boolean;
 }
 
-export default function HaloLogo({ variant }: HaloLogoProps) {
+export default function HaloLogo({ variant, showIntroducing = false }: HaloLogoProps) {
     const logoRef = useRef<SVGSVGElement>(null);
     const liquidMetalScale = useLiquidMetalScale(logoRef);
 
@@ -15,19 +16,24 @@ export default function HaloLogo({ variant }: HaloLogoProps) {
         dark: {
             logoFill: 'var(--color-base-cream)',
             liquidMetalTint: '#FBFDE2', /* Matches --color-base-cream */
-            bgClass: 'banner-center--dark'
+            bgClass: 'banner-center--dark',
+            textColor: 'var(--color-base-cream)'
         },
         light: {
             logoFill: 'var(--color-base-green)',
             liquidMetalTint: '#274029', /* Matches --color-base-green */
-            bgClass: 'banner-center--light'
+            bgClass: 'banner-center--light',
+            textColor: 'var(--color-base-green)'
         }
     };
 
-    const { logoFill, liquidMetalTint, bgClass } = colors[variant];
+    const { logoFill, liquidMetalTint, bgClass, textColor } = colors[variant];
 
     return (
         <div className={`banner-center ${bgClass}`}>
+            {showIntroducing && (
+                <span className="banner-introducing" style={{ color: textColor }}>Introducing</span>
+            )}
             <div className="banner-logo-wrapper">
                 <svg
                     ref={logoRef}
@@ -49,7 +55,7 @@ export default function HaloLogo({ variant }: HaloLogoProps) {
                     distortion={0.07}
                     contour={0.4}
                     scale={1}
-                    rotation={0}
+                    rotation={45}
                     shape="diamond"
                     angle={0}
                     image="https://workers.paper.design/file-assets/01KG85R3HYDAAEWD7AE7ZCGNTF/01KG812P9Q3TZH32MBX86NF9M5.svg"
