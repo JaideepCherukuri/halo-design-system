@@ -31,8 +31,17 @@
     position: relative;
     width: 65%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+}
+
+.banner-introducing {
+    font-family: var(--font-body, 'PP Neue Montreal', system-ui, sans-serif);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
 }
 
 .banner-center--dark {

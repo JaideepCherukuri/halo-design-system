@@ -7,7 +7,7 @@ export default function MissionCard() {
             <div className="mission-card">
                 <div className="mission-content">
                     <h2 className="mission-text">
-                        We are building the financial infrastructure the <span className="highlight-text">agent economy</span> needs to scale.
+                        Enabling agents and entities become <span className="highlight-text">ECONOMIC ACTORS</span>
                     </h2>
                 </div>
                 <div className="mission-visual">
