@@ -735,6 +735,12 @@
         font-size: 0.875rem;
     }
 
+    /* Add spacing between logo and nav on mobile */
+    .header-nav {
+        margin-left: 1rem;
+        gap: 0.75rem;
+    }
+
     .newsletter-form {
         flex-direction: column;
         align-items: center;
