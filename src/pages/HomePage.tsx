@@ -414,7 +414,7 @@ export default function HomePage() {
                             </p>
 
                             <p className="manifesto-paragraph manifesto-paragraph--emphasis">
-                                Payments and authentication are foundational, but they're not the product.
+                                We are the missing layer between agents and money.
                             </p>
                         </div>
                     </div>
@@ -429,7 +429,7 @@ export default function HomePage() {
 
                         <div className="section-text">
                             <p className="manifesto-paragraph manifesto-paragraph--lead">
-                                A universal interoperability layer for agentic commerce protocols, enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
+                                The universal layer for agentic commerce protocols, enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
                             </p>
 
                             <p className="manifesto-paragraph">
