@@ -1,0 +1,50 @@
+# HALO | Agentic Banking OS
+
+> The unified infrastructure layer connecting merchants, agents, and protocols.
+
+## Mission
+Halo bridges the gap between conversational AI assistants and e-commerce transactions by providing delegated authentication, risk-based payment orchestration, and real-time transaction monitoring.
+
+## Core Capabilities
+
+### 1. Universal Vault (Delegated Auth)
+- **Problem:** Agents currently break context to ask users for OTPs/Logins.
+- **Solution:** Halo provides scoped, pre-authorized session keys. Users set limits (e.g., "Max $50/day for Coffee"), and agents transact within those bounds.
+
+### 2. Risk Engine & Ledger
+- **Real-time Scoring:** Every intent is scored (0-100) based on merchant reputation and transaction anomalies.
+- **Immutable Ledger:** All intents are hashed and stored (simulated or on-chain) to prevent fraud and ensure non-repudiation.
+- **Protocols:** Supports Google UCP (Universal Commerce Protocol) and ACP (Agent Control Protocol).
+
+## Developer Integration
+
+### Install SDK
+```bash
+npm install @halofy/sdk
+```
+
+### Initialize Payment
+```typescript
+import { Halo } from '@halofy/sdk';
+
+const halo = new Halo({ apiKey: process.env.HALO_KEY });
+
+const intent = await halo.createIntent({
+  amount: 5000, // $50.00
+  currency: 'USD',
+  merchantId: 'mer_123',
+  protocol: 'UCP',
+  protocolRef: 'req_888'
+});
+
+// Returns secure payment link or auto-executes if within limits
+```
+
+## Architecture
+- **Frontend:** React/Vite (CSR) -> Migrating to Next.js for SSR.
+- **Backend:** Node.js / Supabase.
+- **Ledger:** Solidity (Ethereum) for audit trails.
+
+## Contact
+- Website: https://halofy.ai
+- Developer Docs: https://halofy.ai/docs (Alpha)
