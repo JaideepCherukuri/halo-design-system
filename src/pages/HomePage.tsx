@@ -126,30 +126,40 @@ function LinkedInIcon() {
 function NewsletterForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'already_subscribed'>('idle');
     const [email, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Enhanced email validation with regex
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            setStatus('error'); // Could separate validation error
+            setErrorMessage('Please enter a valid email address.');
+            setStatus('error');
             return;
         }
 
+        // Basic XSS prevention - sanitize input
+        const sanitizedEmail = email.trim().toLowerCase();
+        
         setStatus('loading');
+        setErrorMessage('');
 
         try {
-            const { supabase } = await import('../lib/supabase');
+            const { supabase, getSafeErrorMessage } = await import('../lib/supabase');
 
             const { error } = await supabase
                 .from('subscribers')
-                .insert([{ email }]);
+                .insert([{ email: sanitizedEmail }]);
 
             if (error) {
                 if (error.code === '23505') { // Unique violation
                     setStatus('already_subscribed');
                 } else {
-                    console.error('Supabase error:', error);
+                    if (import.meta.env.DEV) {
+                        console.error('Subscription error:', error.code);
+                    }
+                    setErrorMessage(getSafeErrorMessage(error));
                     setStatus('error');
                 }
             } else {
@@ -157,7 +167,10 @@ function NewsletterForm() {
                 setEmail('');
             }
         } catch (err) {
-            console.error('Signup error:', err);
+            if (import.meta.env.DEV) {
+                console.error('Signup error:', err);
+            }
+            setErrorMessage('Unable to connect. Please try again later.');
             setStatus('error');
         }
     };
@@ -171,37 +184,45 @@ function NewsletterForm() {
                     value={email}
                     onChange={(e) => {
                         setEmail(e.target.value);
-                        if (status !== 'idle') setStatus('idle');
+                        if (status !== 'idle') {
+                            setStatus('idle');
+                            setErrorMessage('');
+                        }
                     }}
                     placeholder="Enter your email…"
                     className="newsletter-input"
                     required
+                    maxLength={254}
+                    autoComplete="email"
                     disabled={status === 'loading' || status === 'success'}
+                    aria-label="Email address"
+                    aria-describedby={status === 'error' ? 'newsletter-error' : undefined}
                 />
                 <button
                     type="submit"
                     className="newsletter-button"
                     disabled={status === 'loading' || status === 'success'}
+                    aria-label="Sign up for newsletter"
                 >
                     {status === 'loading' ? 'Signing up...' : status === 'success' ? 'Signed Up' : 'Sign Up'}
                 </button>
             </form>
 
             {status === 'success' && (
-                <p className="newsletter-feedback newsletter-feedback--success">
+                <p className="newsletter-feedback newsletter-feedback--success" role="status">
                     You have successfully signed up!
                 </p>
             )}
 
             {status === 'already_subscribed' && (
-                <p className="newsletter-feedback newsletter-feedback--warning">
+                <p className="newsletter-feedback newsletter-feedback--warning" role="status">
                     You have already signed up!
                 </p>
             )}
 
             {status === 'error' && (
-                <p className="newsletter-feedback newsletter-feedback--error">
-                    Something went wrong. Please try again.
+                <p id="newsletter-error" className="newsletter-feedback newsletter-feedback--error" role="alert">
+                    {errorMessage || 'Something went wrong. Please try again.'}
                 </p>
             )}
         </div>
@@ -475,12 +496,24 @@ export default function HomePage() {
                     </div>
                     <div className="footer-right">
                         <div className="footer-social">
-                            <span className="social-link" aria-label="X (Twitter)">
+                            <a 
+                                href="https://twitter.com/halofy" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="social-link" 
+                                aria-label="Follow us on X (Twitter)"
+                            >
                                 <XIcon />
-                            </span>
-                            <span className="social-link" aria-label="LinkedIn">
+                            </a>
+                            <a 
+                                href="https://linkedin.com/company/halofy" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="social-link" 
+                                aria-label="Follow us on LinkedIn"
+                            >
                                 <LinkedInIcon />
-                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>
