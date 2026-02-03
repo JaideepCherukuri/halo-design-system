@@ -368,7 +368,7 @@ export default function HomePage() {
                             </p>
 
                             <p className="manifesto-paragraph manifesto-paragraph--emphasis">
-                                Modern financial infrastructure is not built for the Agentic Economy.
+                                Current financial infrastructure is not built for the Agentic Economy.
                             </p>
                         </div>
                     </div>
