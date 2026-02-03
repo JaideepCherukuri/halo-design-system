@@ -346,7 +346,7 @@ export default function HomePage() {
                 {/* Dot Navigation Indicators */}
                 <nav className="scroll-indicator" aria-label="Section navigation">
                     <ul>
-                        <li><a href="#section-evolution" className={activeSection === 0 ? 'active' : ''}><span className="sr-only">Evolution of Payments</span></a></li>
+                        <li><a href="#section-evolutiEvolution of Paymentson" className={activeSection === 0 ? 'active' : ''}><span className="sr-only"></span></a></li>
                         <li><a href="#section-fragmentation" className={activeSection === 1 ? 'active' : ''}><span className="sr-only">Fragmentation Problem</span></a></li>
                         <li><a href="#section-builders" className={activeSection === 2 ? 'active' : ''}><span className="sr-only">Builders Should Build</span></a></li>
                         <li><a href="#section-halo" className={activeSection === 3 ? 'active' : ''}><span className="sr-only">Introducing Halo</span></a></li>
@@ -429,7 +429,7 @@ export default function HomePage() {
 
                         <div className="section-text">
                             <p className="manifesto-paragraph manifesto-paragraph--lead">
-                                The universal layer for agentic commerce protocols, enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
+                                The unified infrastructure layer that connects merchants, agents, and protocols - so agentic commerce just works.
                             </p>
 
                             <p className="manifesto-paragraph">
