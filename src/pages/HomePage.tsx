@@ -429,7 +429,7 @@ export default function HomePage() {
 
                         <div className="section-text">
                             <p className="manifesto-paragraph manifesto-paragraph--lead">
-                                A universal interoperability layer for agentic commerce protocols, enabling merchants and agents to seamlessly connect, transact, and scale across fragmented payment ecosystems.
+                                The unified infrastructure layer that connects merchants, agents, and protocols - so agentic commerce just works.
                             </p>
 
                             <p className="manifesto-paragraph">
