@@ -154,6 +154,7 @@ function NewsletterForm() {
 
             if (error) {
                 if (error.code === '23505') { // Unique violation
+                    setErrorMessage('');
                     setStatus('already_subscribed');
                 } else {
                     if (import.meta.env.DEV) {
