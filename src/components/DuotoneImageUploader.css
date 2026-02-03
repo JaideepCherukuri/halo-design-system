@@ -11,14 +11,15 @@
 }
 
 /* Soft Brutalist Header */
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 24px;
-border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-padding-bottom: 16px;
-flex-wrap: wrap;
-gap: 16px;
+.duotone-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .duotone-controls h3 {

@@ -95,7 +95,9 @@ export default function DuotoneImageUploader() {
             link.href = dataUrl;
             link.click();
         } catch (err) {
-            console.error('Failed to download image', err);
+            if (import.meta.env.DEV) {
+                console.error('Failed to download image', err);
+            }
         }
     };
 
