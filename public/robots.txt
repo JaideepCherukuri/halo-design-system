@@ -1,0 +1,26 @@
+# robots.txt for HALO - Agentic Banking OS
+# Allow all crawlers to index the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://halofy.ai/sitemap.xml
+
+# Crawl-delay to be respectful (optional)
+Crawl-delay: 1
+
+# Block common bot paths (if you add admin/backend later)
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Allow social media crawlers explicitly
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
