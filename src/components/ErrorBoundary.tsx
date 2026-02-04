@@ -26,12 +26,13 @@ export class ErrorBoundary extends Component<Props, State> {
     }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        // Log error to monitoring service in production
-        if (import.meta.env.PROD) {
-            // TODO: Send to error tracking service (Sentry, LogRocket, etc.)
+        // Log error only in development to avoid exposing sensitive information
+        if (!import.meta.env.PROD) {
             console.error('Error Boundary caught an error:', error, errorInfo);
         } else {
-            console.error('Error Boundary caught an error:', error, errorInfo);
+            // TODO: Send sanitized error info to error tracking service (Sentry, LogRocket, etc.)
+            // When implementing, ensure no sensitive data (payment info, user data, etc.) is logged
+            console.error('An error occurred in the application. Error ID:', errorInfo.componentStack?.split('\n')[0] || 'unknown');
         }
     }
 
