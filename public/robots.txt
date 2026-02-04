@@ -12,8 +12,6 @@ Crawl-delay: 1
 
 # Block common bot paths (if you add admin/backend later)
 Disallow: /api/
-Disallow: /*.json$
-Disallow: /*.xml$
 
 # Allow social media crawlers explicitly
 User-agent: Twitterbot
