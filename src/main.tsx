@@ -1,6 +1,7 @@
 import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import ErrorBoundary from './components/ErrorBoundary'
 import './index.css'
 
@@ -37,6 +38,7 @@ createRoot(document.getElementById('root')!).render(
           </Routes>
         </Suspense>
       </BrowserRouter>
+      <Analytics />
     </ErrorBoundary>
   </StrictMode>,
 )
