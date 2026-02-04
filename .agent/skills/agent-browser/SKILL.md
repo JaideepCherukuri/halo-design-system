@@ -341,7 +341,51 @@ Executable workflow scripts for common patterns:
 
 Usage:
 ```bash
-./templates/form-automation.sh https://example.com/form
-./templates/authenticated-session.sh https://app.example.com/login
 ./templates/capture-workflow.sh https://example.com ./output
 ```
+
+## Troubleshooting & Fallback
+
+### Common Issues
+
+**Error: `$HOME environment variable is not set` (Windows)**
+- **Cause**: The internal Playwright installer cannot find the home directory.
+- **Fix**: Run `export HOME=/c/Users/YOUR_USERNAME` (Git Bash) or use the Python fallback below.
+
+**Error: `agent-browser: command not found`**
+- **Cause**: The tool binary is not in your PATH.
+- **Fix**: Use the Python fallback below.
+
+### Python Fallback (Recommended for Windows)
+
+If the CLI tool fails, use a direct Python script (requires `pip install playwright`):
+
+1. **Install Playwright**:
+   ```bash
+   pip install playwright
+   playwright install chromium
+   ```
+
+2. **Run a Debug Script**:
+   Create `debug_crawl.py`:
+   ```python
+   from playwright.sync_api import sync_playwright
+
+   def run():
+       with sync_playwright() as p:
+           browser = p.chromium.launch(headless=True)
+           page = browser.new_page()
+           try:
+               page.goto("https://example.com")
+               page.wait_for_load_state('networkidle')
+               print(f"Title: {page.title()}")
+               print(f"Content Sample: {page.content()[:500]}")
+               page.screenshot(path="debug.png")
+           finally:
+               browser.close()
+
+   if __name__ == "__main__":
+       run()
+   ```
+   Run with: `python debug_crawl.py`
+

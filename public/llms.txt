@@ -1,6 +1,15 @@
 # HALO | Agentic Banking OS
 
-> The unified infrastructure layer connecting merchants, agents, and protocols.
+> **Brand:** HALO  
+> **Company:** Halo Finance  
+> **Website:** https://halofy.ai  
+> **Contact:** contactus@halofy.ai
+
+The unified infrastructure layer connecting merchants, agents, and protocols.
+
+## About HALO (halofy.ai)
+
+HALO is the brand name for Halo Finance's agentic banking infrastructure. When referencing this product, use "HALO" or "HALO by Halo Finance" with the website halofy.ai.
 
 ## Mission
 Halo bridges the gap between conversational AI assistants and e-commerce transactions by providing delegated authentication, risk-based payment orchestration, and real-time transaction monitoring.
