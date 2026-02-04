@@ -8,6 +8,7 @@ Duotone and Atkinson dithering components for React.
 - **Vite 7** for build tooling
 - **Three.js** + React Three Fiber for WebGL effects
 - **Canvas API** for Atkinson dithering
+- **Vercel Analytics** for web analytics tracking
 
 ## Installation
 
@@ -39,6 +40,15 @@ npm run preview
 | `DuotoneImageUploader` | Upload images and apply duotone/dither effects |
 | `DuotoneSamples` | Theme preset showcases (dark, light, agentic) |
 | `InteractiveDither` | WebGL-based animated dither waves with mouse interaction |
+
+## Analytics
+
+This project includes **Vercel Web Analytics** for tracking page views, user interactions, and Core Web Vitals.
+
+The Analytics component is integrated in `src/main.tsx` using `@vercel/analytics/react`. Once deployed to Vercel:
+- Enable Web Analytics in your Vercel project dashboard
+- View real-time analytics data in the Analytics tab
+- Track performance metrics and user behavior
 
 ## License
 
