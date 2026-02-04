@@ -141,7 +141,7 @@ function NewsletterForm() {
 
         // Basic XSS prevention - sanitize input
         const sanitizedEmail = email.trim().toLowerCase();
-        
+
         setStatus('loading');
         setErrorMessage('');
 
@@ -496,24 +496,20 @@ export default function HomePage() {
                     </div>
                     <div className="footer-right">
                         <div className="footer-social">
-                            <a 
-                                href="https://twitter.com/halofy" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="social-link" 
-                                aria-label="Follow us on X (Twitter)"
+                            <span
+                                className="social-link"
+                                style={{ cursor: 'default', opacity: 0.5 }}
+                                aria-label="X (Twitter) - Coming Soon"
                             >
                                 <XIcon />
-                            </a>
-                            <a 
-                                href="https://linkedin.com/company/halofy" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="social-link" 
-                                aria-label="Follow us on LinkedIn"
+                            </span>
+                            <span
+                                className="social-link"
+                                style={{ cursor: 'default', opacity: 0.5 }}
+                                aria-label="LinkedIn - Coming Soon"
                             >
                                 <LinkedInIcon />
-                            </a>
+                            </span>
                         </div>
                     </div>
                 </div>
