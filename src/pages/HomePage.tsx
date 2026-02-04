@@ -367,7 +367,7 @@ export default function HomePage() {
                 {/* Dot Navigation Indicators */}
                 <nav className="scroll-indicator" aria-label="Section navigation">
                     <ul>
-                        <li><a href="#section-evolutiEvolution of Paymentson" className={activeSection === 0 ? 'active' : ''}><span className="sr-only"></span></a></li>
+                        <li><a href="#section-evolution" className={activeSection === 0 ? 'active' : ''}><span className="sr-only">Evolution of Payments</span></a></li>
                         <li><a href="#section-fragmentation" className={activeSection === 1 ? 'active' : ''}><span className="sr-only">Fragmentation Problem</span></a></li>
                         <li><a href="#section-builders" className={activeSection === 2 ? 'active' : ''}><span className="sr-only">Builders Should Build</span></a></li>
                         <li><a href="#section-halo" className={activeSection === 3 ? 'active' : ''}><span className="sr-only">Introducing Halo</span></a></li>
