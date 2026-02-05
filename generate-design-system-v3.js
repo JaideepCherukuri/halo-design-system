@@ -34,14 +34,14 @@ const html = `<!DOCTYPE html>
     /* 1. HALO CORE FONTS */
     @font-face {
       font-family: 'FK Raster';
-      src: url('../../public/fonts/FK_Raster_Roman_Compact_Smooth.ttf') format('truetype');
+      src: url('/fonts/FK_Raster_Roman_Compact_Smooth.ttf') format('truetype');
       font-weight: 400;
       font-display: swap;
     }
 
     @font-face {
       font-family: 'PP Neue Montreal';
-      src: url('../../public/fonts/PP_Neue_Montreal_Regular.ttf') format('truetype');
+      src: url('/fonts/PP_Neue_Montreal_Regular.ttf') format('truetype');
       font-weight: 400;
       font-display: swap;
     }
