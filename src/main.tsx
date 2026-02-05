@@ -8,6 +8,7 @@ import './index.css'
 // Lazy load pages
 const HomePage = lazy(() => import('./pages/HomePage'))
 const BrandingPage = lazy(() => import('./pages/BrandingPage'))
+const DesignSystemPage = lazy(() => import('./pages/DesignSystemPage'))
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/branding" element={<BrandingPage />} />
+            <Route path="/designsys" element={<DesignSystemPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
