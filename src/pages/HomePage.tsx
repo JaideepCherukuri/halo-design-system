@@ -503,13 +503,15 @@ export default function HomePage() {
                             >
                                 <XIcon />
                             </span>
-                            <span
+                            <a
+                                href="https://www.linkedin.com/company/112079026"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="social-link"
-                                style={{ cursor: 'default', opacity: 0.5 }}
-                                aria-label="LinkedIn - Coming Soon"
+                                aria-label="LinkedIn"
                             >
                                 <LinkedInIcon />
-                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>
