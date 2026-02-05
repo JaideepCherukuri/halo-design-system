@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Design System Page
  * Renders the generated static V3 design system HTML in a full-screen iframe
