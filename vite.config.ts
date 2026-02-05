@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     headers: {
       'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'DENY',
+      'X-Frame-Options': 'SAMEORIGIN',
       'X-XSS-Protection': '1; mode=block',
     },
   },
@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Manual chunk splitting for better caching
-        manualChunks: {  
+        manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'three-vendor': ['three', '@react-three/fiber', '@react-three/postprocessing'],
           'animation-vendor': ['gsap'],
