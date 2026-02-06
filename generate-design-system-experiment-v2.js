@@ -27,7 +27,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HALO Design System V3 (Technical)</title>
+  <title>HALO Design System V2 (Experiment)</title>
   <script src="https://tweakcn.com/live-preview.min.js"></script>
   
   <style>
@@ -47,41 +47,42 @@ const html = `<!DOCTYPE html>
     }
 
     :root {
-      /* 2. HALO CORE TOKENS (Strict Alignment) */
+      /* 2. HALO CORE TOKENS (V2 Experiment - Deep Teal & Warm White) */
       --font-brand: 'FK Raster', system-ui, sans-serif;
       --font-ui: 'PP Neue Montreal', system-ui, sans-serif;
       --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
       
-      /* Colors - HALO Agentic (Sage/Forest) */
-      --bg-primary: #F4F7EE;      /* Was #F7F7F5 */
-      --bg-card: #F4F7EE;         /* Flat, no white cards */
-      --text-primary: #0D1F18;    /* Was #1A3C2B */
-      --text-secondary: rgba(13, 31, 24, 0.6);
-      --text-muted: rgba(13, 31, 24, 0.4);
+      /* Colors - HALO V2 Palette (Design Brief) */
+      --bg-primary: #FDFCFA;      /* Warm White */
+      --bg-card: #FDFCFA;         /* Warm White */
+      --text-primary: #0A3D35;    /* Deep Teal (Primary Text) */
+      --text-secondary: #166856;  /* Forest Teal (Mid-tone) */
+      --text-muted: #64748B;      /* Slate */
       
-      --border-primary: #CBD5A0;
-      --border-subtle: rgba(13, 31, 24, 0.1); /* Hairline */
+      --border-primary: #166856;  /* Forest Teal */
+      --border-subtle: rgba(22, 104, 86, 0.2); /* Deep Teal/Forest low opacity */
       
-      --accent: #A3BD6A;          /* Olive */
-      --accent-mint: #9EFFBF;     /* Kept from spec as accent */
-      --accent-gold: #F4D35E;     /* Kept from spec as accent */
+      --accent: #34D399;          /* Success Green */
+      --accent-mint: #A7F3D0;     /* Soft Mint */
+      --accent-gold: #F59E0B;     /* Warning Amber (mapped to Gold slot) */
+      --destructive: #F59E0B;     /* Warning Amber */
       
-      /* Status Colors (Mapped to new palette) */
-      --status-active-bg: rgba(158, 255, 191, 0.2);
-      --status-active-text: #1A3C2B;
-      --status-pending-bg: rgba(244, 211, 94, 0.2);
-      --status-pending-text: #8a6a1c;
-      --status-idle-bg: rgba(58, 58, 56, 0.05);
-      --status-idle-text: #555;
+      /* Status Colors */
+      --status-active-bg: rgba(52, 211, 153, 0.15); /* Success Green tint */
+      --status-active-text: #064E3B; /* Darker green for text */
+      --status-pending-bg: rgba(245, 158, 11, 0.15); /* Amber tint */
+      --status-pending-text: #78350F; /* Dark amber text */
+      --status-idle-bg: rgba(100, 116, 139, 0.1);   /* Slate tint */
+      --status-idle-text: #475569;
       
       /* 3. TECHNICAL MINIMALIST OVERRIDES */
-      /* Radii: Strict 0px or 2px */
+      /* Radii: Strict 2px */
       --radius-sm: 2px;
       --radius-md: 2px;
       --radius-lg: 2px;
       --radius-xl: 2px;
       
-      /* Shadows: Removed */
+      /* Shadows: None (Technical/Flat) */
       --shadow-sm: none;
       --shadow-md: none;
       --shadow-lg: none;
@@ -98,23 +99,39 @@ const html = `<!DOCTYPE html>
       --space-8: 64px;
       
       /* Animations */
-      --ease-tech: cubic-bezier(0.2, 0, 0, 1);
-      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .dark {
-      /* HALO Dark Mode Tokens */
-      --bg-primary: #000000;
-      --bg-card: #0A0A0A;
-      --text-primary: #FBFDE2;
-      --text-secondary: rgba(251, 253, 226, 0.6);
-      --text-muted: rgba(251, 253, 226, 0.4);
+      /* Dark Mode - Black Base (per user preference) */
+      --bg-primary: #000000;      /* Black */
+      --bg-card: #0A0A0A;         /* Near-black */
+      --text-primary: #FDFCFA;    /* Warm White */
+      --text-secondary: #A7F3D0;  /* Soft Mint (readability on Dark) */
+      --text-muted: #64748B;      /* Slate */
       
-      --border-primary: rgba(251, 253, 226, 0.15);
-      --border-subtle: rgba(255, 255, 255, 0.08); /* Hairline */
+      --border-primary: #34D399;  /* Success Green (as highlight/border) */
+      --border-subtle: rgba(253, 252, 250, 0.1); /* Warm White low opacity */
       
-      --accent: #FBFDE2;
+      --accent: #34D399;          /* Success Green */
+      
+      /* Status Colors - Dark Mode Adjustments */
+      --status-active-bg: rgba(52, 211, 153, 0.2);
+      --status-active-text: #D1FAE5;
+      --status-pending-bg: rgba(245, 158, 11, 0.2);
+      --status-pending-text: #FEF3C7;
+      --status-idle-bg: rgba(100, 116, 139, 0.2);
+      --status-idle-text: #E2E8F0;
+      
+      --destructive: #F59E0B;
+      --destructive-foreground: #FFFFFF;
+    }
+
+    /* Easing Functions */
+    :root {
+      --ease-tech: cubic-bezier(0.2, 0, 0, 1);
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -260,36 +277,36 @@ const html = `<!DOCTYPE html>
     
     /* CTA - Gradient */
     .btn--cta {
-      background: linear-gradient(135deg, rgba(213, 218, 173, 0.8) 0%, rgba(253, 253, 250, 0.8) 100%);
-      border: 1px solid #CBD5A0;
-      color: #0D1F18;
+      background: linear-gradient(135deg, rgba(167, 243, 208, 0.8) 0%, rgba(253, 252, 250, 0.8) 100%); /* Soft Mint to Warm White */
+      border: 1px solid #34D399; /* Success Green */
+      color: #0A3D35; /* Deep Teal */
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     }
     
     .btn--cta:hover {
-      background: linear-gradient(135deg, rgba(213, 218, 173, 1) 0%, rgba(253, 253, 250, 1) 100%);
+      background: linear-gradient(135deg, rgba(167, 243, 208, 1) 0%, rgba(253, 252, 250, 1) 100%);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
     }
     
     .dark .btn--cta {
-      background: linear-gradient(135deg, #A3BD6A 0%, #D5DAAD 100%); /* Sage Gradient for Dark Mode */
-      border: 1px solid #A3BD6A;
-      color: #0D1F18;
-      box-shadow: 0 2px 10px rgba(163, 189, 106, 0.2) !important;
+      background: linear-gradient(135deg, #34D399 0%, #A7F3D0 100%); /* Success Green to Soft Mint */
+      border: 1px solid #34D399;
+      color: #0A3D35; /* Deep Teal text */
+      box-shadow: 0 2px 10px rgba(52, 211, 153, 0.2) !important;
     }
     
     .dark .btn--cta:hover {
-      background: linear-gradient(135deg, #B5CF7A 0%, #E1E6B9 100%);
-      box-shadow: 0 4px 15px rgba(163, 189, 106, 0.3) !important;
+      background: linear-gradient(135deg, #4AE3A9 0%, #B7F3E0 100%);
+      box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3) !important;
       transform: translateY(-1px);
     }
 
     /* Primary - Solid Fill */
     .btn--primary {
-      background: #0D1F18;
-      border: 1px solid #0D1F18;
-      color: #FBFDE2;
+      background: #0A3D35; /* Deep Teal */
+      border: 1px solid #0A3D35;
+      color: #FDFCFA; /* Warm White */
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     }
     
@@ -299,9 +316,9 @@ const html = `<!DOCTYPE html>
     }
     
     .dark .btn--primary {
-      background: #FBFDE2;
-      border: 1px solid #FBFDE2;
-      color: #0D1F18;
+      background: #FDFCFA; /* Warm White */
+      border: 1px solid #FDFCFA;
+      color: #0A3D35; /* Deep Teal */
     }
     .dark .btn--primary:hover {
       background: #FFFFFF;
@@ -320,27 +337,27 @@ const html = `<!DOCTYPE html>
     }
     
     .dark .btn--outline {
-      border: 1px solid rgba(251, 253, 226, 0.3); /* Visible Cream border for Dark Mode */
-      color: #FBFDE2;
+      border: 1px solid rgba(253, 252, 250, 0.3); /* Warm White border for Dark Mode */
+      color: #FDFCFA; /* Warm White */
     }
     .dark .btn--outline:hover {
-      background: rgba(251, 253, 226, 0.05);
-      border-color: #FBFDE2;
+      background: rgba(253, 252, 250, 0.05);
+      border-color: #FDFCFA;
     }
 
     /* Subtle */
     .btn--subtle { 
-      background: rgba(163, 189, 106, 0.12);
+      background: rgba(52, 211, 153, 0.12); /* Success Green tint */
       border: 1px solid transparent; 
-      color: #5a7a3a; 
+      color: #0A3D35; /* Deep Teal */
     }
     .btn--subtle:hover {
-      background: rgba(163, 189, 106, 0.2);
-      border-color: rgba(163, 189, 106, 0.3);
+      background: rgba(52, 211, 153, 0.2); /* Success Green */
+      border-color: rgba(52, 211, 153, 0.3);
     }
     .dark .btn--subtle {
-      background: rgba(251, 253, 226, 0.1);
-      color: #FBFDE2;
+      background: rgba(52, 211, 153, 0.1); /* Success Green tint */
+      color: #A7F3D0; /* Soft Mint */
     }
 
     /* Ghost */
@@ -479,28 +496,28 @@ const html = `<!DOCTYPE html>
     .data-table th { text-align: left; padding: var(--space-3) var(--space-6); color: var(--text-muted); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border-subtle); }
     .data-table td { padding: var(--space-3) var(--space-6); color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); font-size: 0.8rem; }
     .data-table tbody tr { transition: background-color 0.2s; }
-    .data-table tbody tr:hover { background-color: rgba(163, 189, 106, 0.08); /* Sage Hover */ }
+    .data-table tbody tr:hover { background-color: rgba(52, 211, 153, 0.08); /* Success Green Hover */ }
     
     .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 2px; font-size: 0.7rem; border: 1px solid transparent; font-family: var(--font-mono); text-transform: uppercase; }
-    .status-badge--active { background: rgba(163, 189, 106, 0.2); color: #0D1F18; border-color: rgba(163, 189, 106, 0.3); }
-    .status-badge--pending { background: rgba(203, 213, 160, 0.3); color: #274029; border-color: rgba(203, 213, 160, 0.4); } /* Replaced Orange with Sage/Brand Green */
-    .status-badge--idle { background: rgba(0, 0, 0, 0.03); color: var(--text-muted); border-color: var(--border-subtle); }
+    .status-badge--active { background: rgba(52, 211, 153, 0.2); color: #0A3D35; border-color: rgba(52, 211, 153, 0.3); } /* Success Green */
+    .status-badge--pending { background: rgba(245, 158, 11, 0.15); color: #78350F; border-color: rgba(245, 158, 11, 0.3); } /* Warning Amber */
+    .status-badge--idle { background: rgba(100, 116, 139, 0.1); color: var(--text-muted); border-color: var(--border-subtle); } /* Slate */
 
     /* Dark Mode Overrides for Network Activity Table */
-    .dark .data-table tbody tr:hover { background-color: rgba(251, 253, 226, 0.05); }
-    .dark .status-badge--active { background: rgba(163, 189, 106, 0.2); color: #FBFDE2; border-color: rgba(163, 189, 106, 0.3); }
-    .dark .status-badge--pending { background: rgba(203, 213, 160, 0.2); color: #E1F0DA; border-color: rgba(203, 213, 160, 0.3); } 
+    .dark .data-table tbody tr:hover { background-color: rgba(52, 211, 153, 0.08); }
+    .dark .status-badge--active { background: rgba(52, 211, 153, 0.2); color: #A7F3D0; border-color: rgba(52, 211, 153, 0.3); } /* Success Green */
+    .dark .status-badge--pending { background: rgba(245, 158, 11, 0.2); color: #FEF3C7; border-color: rgba(245, 158, 11, 0.3); } /* Warning Amber */
     .dark .status-badge--idle { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); border-color: var(--border-subtle); }
     
     /* V2 Network Activity Specifics - Refined for V3 */
-    .status-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 2px rgba(163, 189, 106, 0.15); animation: pulse 2s infinite; }
+    .status-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.15); animation: pulse 2s infinite; }
     .status-dot-sm { width: 4px; height: 4px; background: currentColor; border-radius: 50%; opacity: 0.7; }
     .primary-text { font-family: var(--font-mono); color: var(--text-primary); font-weight: 500; }
     
     @keyframes pulse { 
-      0% { box-shadow: 0 0 0 0 rgba(163, 189, 106, 0.4); } 
-      70% { box-shadow: 0 0 0 4px rgba(163, 189, 106, 0); } 
-      100% { box-shadow: 0 0 0 0 rgba(163, 189, 106, 0); } 
+      0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); } 
+      70% { box-shadow: 0 0 0 4px rgba(52, 211, 153, 0); } 
+      100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } 
     }
 
     /* MOSAIC GRID from V2 (Kept as content) */
@@ -532,7 +549,7 @@ const html = `<!DOCTYPE html>
     .mosaic-sub { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); margin-top: var(--space-2); text-transform: uppercase; }
     .dither-img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) grayscale(1); mix-blend-mode: multiply; opacity: 0.8; }
     .dark .dither-img { filter: contrast(1.2) grayscale(1) invert(0.9); mix-blend-mode: screen; }
-    .mosaic-item--dark { background: #0D1F18; color: #FBFDE2; }
+    .mosaic-item--dark { background: #0A3D35; color: #FDFCFA; } /* Deep Teal / Warm White */
 
     /* CODE BLOCK - Flat V3 Style */
     .code-block { border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-card); overflow: hidden; margin-bottom: 40px; }
@@ -541,153 +558,6 @@ const html = `<!DOCTYPE html>
     .code-block__content { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); padding: var(--space-4); overflow-x: auto; white-space: pre-wrap; margin: 0; background: transparent; }
     .btn-icon { background: transparent; border: 1px solid transparent; color: var(--text-secondary); cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; }
     .btn-icon:hover { background: var(--status-idle-bg); color: var(--text-primary); border-color: var(--border-subtle); }
-
-
-    /* =============================================
-       NEW UI BLOCKS (BENTO & FORM)
-       ============================================= */
-
-    /* BENTO GRID */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border-primary); /* Gap color */
-      border: 1px solid var(--border-primary);
-      margin-top: var(--space-5);
-    }
-
-    .bento-cell {
-      background: var(--bg-card);
-      padding: var(--space-6);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      min-height: 240px;
-    }
-
-    .bento-header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-      padding-left: var(--space-3);
-      border-left: 2px solid var(--accent);
-    }
-    
-    .bento-title {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-primary);
-    }
-
-    .bento-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    /* REQUEST ACCESS FORM */
-    .tech-form-wrapper {
-      position: relative;
-      max-width: 640px;
-      margin: 80px auto;
-      padding: 60px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-primary);
-    }
-
-    /* Corner Markers */
-    .corner-marker {
-      position: absolute;
-      width: 10px; height: 10px;
-      border: 2px solid var(--text-primary);
-      transition: all 0.3s ease;
-    }
-    .tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-    .tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
-    .bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
-    .br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
-    .tech-form-wrapper:hover .corner-marker {
-      width: 14px; height: 14px;
-    }
-
-    .form-header { text-align: center; margin-bottom: 40px; }
-    .form-title { font-family: var(--font-brand); font-size: 2.5rem; margin-bottom: 10px; color: var(--text-primary); }
-    .form-subtitle { font-family: var(--font-ui); font-size: 1rem; color: var(--text-secondary); }
-
-    .form-group { margin-bottom: 24px; }
-    .form-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid var(--border-primary);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-ui);
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      transition: all 0.2s;
-    }
-    
-    .dark .form-input { background: rgba(20,20,20,0.5); }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: var(--text-primary);
-      background: var(--bg-primary);
-    }
-
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border: 1px solid var(--border-primary);
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .checkbox-item:hover { background: var(--status-idle-bg); }
-    
-    .checkbox-box {
-      width: 18px; height: 18px;
-      border: 1px solid var(--text-primary);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    
-    .checkbox-item input:checked + .checkbox-box {
-      background: var(--text-primary);
-    }
-    
-    .checkbox-label {
-      font-family: var(--font-ui);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-    }
 
     /* MOBILE OPTIMIZATIONS - FLEXBOX REFACTOR */
     @media (max-width: 768px) {
@@ -811,70 +681,56 @@ const html = `<!DOCTYPE html>
       <div class="type-sample__text">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</div>
     </div>
 
-    <!-- COLORS (Start of Components) -->
+    <!-- COLORS (Design Brief V8-2 Palette) -->
     <h2 class="section-title">Colors</h2>
     <div class="color-grid">
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#F4F7EE"></div>
+        <div class="color-swatch__preview" style="background:#0A3D35"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Sage Cream</div>
-          <div class="color-swatch__hex">#F4F7EE</div>
+          <div class="color-swatch__name">Deep Teal</div>
+          <div class="color-swatch__hex">#0A3D35</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#A3BD6A"></div>
+        <div class="color-swatch__preview" style="background:#166856"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Olive</div>
-          <div class="color-swatch__hex">#A3BD6A</div>
+          <div class="color-swatch__name">Forest Teal</div>
+          <div class="color-swatch__hex">#166856</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#D5DAAD"></div>
+        <div class="color-swatch__preview" style="background:#34D399"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Sage Light</div>
-          <div class="color-swatch__hex">#D5DAAD</div>
+          <div class="color-swatch__name">Success Green</div>
+          <div class="color-swatch__hex">#34D399</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#CBD5A0"></div>
+        <div class="color-swatch__preview" style="background:#FDFCFA; border: 1px solid #eee"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Border Sage</div>
-          <div class="color-swatch__hex">#CBD5A0</div>
+          <div class="color-swatch__name">Warm White</div>
+          <div class="color-swatch__hex">#FDFCFA</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#274029"></div>
+        <div class="color-swatch__preview" style="background:#64748B"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Brand Green</div>
-          <div class="color-swatch__hex">#274029</div>
+          <div class="color-swatch__name">Slate</div>
+          <div class="color-swatch__hex">#64748B</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#0D1F18"></div>
+        <div class="color-swatch__preview" style="background:#A7F3D0"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Forest</div>
-          <div class="color-swatch__hex">#0D1F18</div>
+          <div class="color-swatch__name">Soft Mint</div>
+          <div class="color-swatch__hex">#A7F3D0</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#000"></div>
+        <div class="color-swatch__preview" style="background:#F59E0B"></div>
         <div class="color-swatch__info">
-          <div class="color-swatch__name">Black</div>
-          <div class="color-swatch__hex">#000000</div>
-        </div>
-      </div>
-      <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#FBFDE2"></div>
-        <div class="color-swatch__info">
-          <div class="color-swatch__name">Cream</div>
-          <div class="color-swatch__hex">#FBFDE2</div>
-        </div>
-      </div>
-      <div class="color-swatch">
-        <div class="color-swatch__preview" style="background:#FDFDFD; border: 1px solid #eee"></div>
-        <div class="color-swatch__info">
-          <div class="color-swatch__name">Card White</div>
-          <div class="color-swatch__hex">#FDFDFD</div>
+          <div class="color-swatch__name">Warning Amber</div>
+          <div class="color-swatch__hex">#F59E0B</div>
         </div>
       </div>
     </div>
@@ -923,111 +779,78 @@ const html = `<!DOCTYPE html>
         </button>
       </div>
       <pre class="code-block__content" id="themeTokensCode">:root {
-  --background: #F4F7EE;
-  --foreground: #0D1F18;
-  --card: #F4F7EE;
-  --card-foreground: #0D1F18;
+  /* HALO Design Brief V8-2 Palette */
+  --background: #FDFCFA;         /* Warm White */
+  --foreground: #0A3D35;         /* Deep Teal */
+  --card: #FDFCFA;
+  --card-foreground: #0A3D35;
   --popover: #FFFFFF;
-  --popover-foreground: #0D1F18;
-  --primary: #0D1F18;
-  --primary-foreground: #FBFDE2;
-  --secondary: #E1F0DA;
-  --secondary-foreground: #2D5B28;
-  --muted: #E1F0DA;
-  --muted-foreground: #666666;
-  --accent: #A3BD6A;
-  --accent-foreground: #0D1F18;
-  --destructive: #0D1F18;
+  --popover-foreground: #0A3D35;
+  --primary: #0A3D35;            /* Deep Teal */
+  --primary-foreground: #FDFCFA; /* Warm White */
+  --secondary: #A7F3D0;          /* Soft Mint */
+  --secondary-foreground: #0A3D35;
+  --muted: #A7F3D0;
+  --muted-foreground: #64748B;   /* Slate */
+  --accent: #34D399;             /* Success Green */
+  --accent-foreground: #0A3D35;
+  --destructive: #F59E0B;        /* Warning Amber */
   --destructive-foreground: #FFFFFF;
-  --border: #CBD5A0;
-  --input: #CBD5A0;
-  --ring: #A3BD6A;
-  --chart-1: #2D5B28;
-  --chart-2: #A3BD6A;
-  --chart-3: #CBD5A0;
-  --chart-4: #E1F0DA;
-  --chart-5: #0D1F18;
-  --sidebar: #F4F7EE;
-  --sidebar-foreground: #0D1F18;
-  --sidebar-primary: #0D1F18;
-  --sidebar-primary-foreground: #FBFDE2;
-  --sidebar-accent: #E1F0DA;
-  --sidebar-accent-foreground: #0D1F18;
-  --sidebar-border: #CBD5A0;
-  --sidebar-ring: #A3BD6A;
-  --font-sans: 'PP Neue Montreal', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'FK Raster', ui-serif, serif;
-  --font-mono: ui-monospace, monospace;
+  --border: #166856;             /* Forest Teal */
+  --input: #166856;
+  --ring: #34D399;               /* Success Green */
+  --chart-1: #0A3D35;
+  --chart-2: #166856;
+  --chart-3: #34D399;
+  --chart-4: #A7F3D0;
+  --chart-5: #64748B;
+  --sidebar: #FDFCFA;
+  --sidebar-foreground: #0A3D35;
+  --sidebar-primary: #0A3D35;
+  --sidebar-primary-foreground: #FDFCFA;
+  --sidebar-accent: #A7F3D0;
+  --sidebar-accent-foreground: #0A3D35;
+  --sidebar-border: #166856;
+  --sidebar-ring: #34D399;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Graphik', ui-serif, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --radius: 0.125rem; /* 2px - Technical/Sharp */
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 0px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 1;
-  --shadow-color: #CBD5A0;
-  --shadow-2xs: 0 1px 0 0 var(--border);
-  --shadow-xs: 0 1px 0 0 var(--border);
-  --shadow-sm: 0 1px 0 0 var(--border);
-  --shadow: 0 1px 0 0 var(--border);
-  --shadow-md: 0 2px 0 0 var(--border);
-  --shadow-lg: 0 4px 0 0 var(--border);
-  --shadow-xl: 0 8px 0 0 var(--border);
-  --shadow-2xl: 0 12px 0 0 var(--border);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #FBFDE2;
+  --background: #000000;         /* Black */
+  --foreground: #FDFCFA;         /* Warm White */
   --card: #0A0A0A;
-  --card-foreground: #FBFDE2;
-  --popover: #0F0F0F;
-  --popover-foreground: #FBFDE2;
-  --primary: #FBFDE2;
-  --primary-foreground: #0D1F18;
-  --secondary: #0A0A0A;
-  --secondary-foreground: #FBFDE2;
-  --muted: #0A0A0A;
-  --muted-foreground: rgba(251, 253, 226, 0.6);
-  --accent: #FBFDE2;
-  --accent-foreground: #0D1F18;
-  --destructive: #FBFDE2; /* Cream for high contrast in dark mode, strictly palette */
-  --destructive-foreground: #0D1F18;
-  --border: rgba(251, 253, 226, 0.15);
-  --input: rgba(251, 253, 226, 0.15);
-  --ring: #FBFDE2;
-  --chart-1: #A3BD6A;
-  --chart-2: #FBFDE2;
-  --chart-3: #CBD5A0;
-  --chart-4: #E1F0DA;
-  --chart-5: #0D1F18;
-  --sidebar: #0F0F0F;
-  --sidebar-foreground: #FBFDE2;
-  --sidebar-primary: #FBFDE2;
-  --sidebar-primary-foreground: #0D1F18;
-  --sidebar-accent: #0A0A0A;
-  --sidebar-accent-foreground: #FBFDE2;
-  --sidebar-border: rgba(251, 253, 226, 0.15);
-  --sidebar-ring: #FBFDE2;
-  --font-sans: 'PP Neue Montreal', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'FK Raster', ui-serif, serif;
-  --font-mono: ui-monospace, monospace;
-  --radius: 0.625rem;
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --shadow-color: #000000;
-  --shadow-2xs: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
-  --shadow-xs: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
-  --shadow-2xl: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  --card-foreground: #FDFCFA;
+  --popover: #0A0A0A;
+  --popover-foreground: #FDFCFA;
+  --primary: #FDFCFA;            /* Warm White */
+  --primary-foreground: #0A3D35; /* Deep Teal */
+  --secondary: #166856;          /* Forest Teal */
+  --secondary-foreground: #FDFCFA;
+  --muted: #166856;
+  --muted-foreground: #A7F3D0;   /* Soft Mint */
+  --accent: #34D399;             /* Success Green */
+  --accent-foreground: #0A3D35;
+  --destructive: #F59E0B;        /* Warning Amber */
+  --destructive-foreground: #FFFFFF;
+  --border: #34D399;             /* Success Green */
+  --input: rgba(253, 252, 250, 0.1);
+  --ring: #34D399;
+  --chart-1: #34D399;
+  --chart-2: #A7F3D0;
+  --chart-3: #FDFCFA;
+  --chart-4: #166856;
+  --chart-5: #64748B;
+  --sidebar: #000000;
+  --sidebar-foreground: #FDFCFA;
+  --sidebar-primary: #FDFCFA;
+  --sidebar-primary-foreground: #0A3D35;
+  --sidebar-accent: #166856;
+  --sidebar-accent-foreground: #FDFCFA;
+  --sidebar-border: #34D399;
+  --sidebar-ring: #34D399;
 }</pre>
     </div>
     </div> <!-- END TAB: TOKENS -->
@@ -1172,127 +995,6 @@ const html = `<!DOCTYPE html>
       </div>
     </div>
 
-    <!-- BENTO GRID (NEW) -->
-    <h2 class="section-title">Bento Feature Grid</h2>
-    <div class="bento-grid">
-      <!-- Card 1: Token System -->
-      <div class="bento-cell">
-        <div class="bento-header" style="border-color: #0D1F18;">
-          <div class="bento-title">01 - Token System</div>
-        </div>
-        <div class="bento-content">
-          <p style="font-family: var(--font-ui); font-size: 0.9rem; margin-bottom: 20px;">Semantic design tokens mapped to CSS custom properties.</p>
-          <div style="background: rgba(13, 31, 24, 0.05); padding: 16px; border-radius: 4px; border: 1px solid var(--border-subtle);">
-            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-primary); margin-bottom: 4px;">--color-forest: #0D1F18</div>
-            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-primary); margin-bottom: 4px;">--color-olive: #A3BD6A</div>
-            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-primary);">--color-sage: #D5DAAD</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Type Scale -->
-      <div class="bento-cell">
-        <div class="bento-header" style="border-color: #A3BD6A;">
-          <div class="bento-title">02 - Type Scale</div>
-        </div>
-        <div class="bento-content">
-          <p style="font-family: var(--font-ui); font-size: 0.9rem; margin-bottom: 20px;">Three-tier typographic hierarchy.</p>
-          <div style="background: var(--bg-primary); border: 1px solid var(--border-primary); padding: 20px;">
-            <div style="font-family: var(--font-brand); font-size: 1.5rem; margin-bottom: 8px;">DISPLAY</div>
-            <div style="font-family: var(--font-ui); font-size: 1rem; margin-bottom: 8px;">Body Copy</div>
-            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary);">MONOSPACE</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Component Library -->
-      <div class="bento-cell">
-        <div class="bento-header" style="border-color: #F4D35E;">
-          <div class="bento-title">03 - Component Library</div>
-        </div>
-        <div class="bento-content">
-           <p style="font-family: var(--font-ui); font-size: 0.9rem; margin-bottom: 20px;">Production-ready components with strict 2px border radius.</p>
-           <div style="display:flex; flex-direction:column; gap:8px; width:100%;">
-             <button class="btn btn--primary" style="width:100%">Primary Button</button>
-             <button class="btn btn--outline" style="width:100%">Secondary Button</button>
-             <div style="border:1px solid var(--border-primary); padding:10px; border-radius:2px; font-family:var(--font-ui); font-size:0.9rem; color:var(--text-muted);">Input Field</div>
-           </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Animation System -->
-      <div class="bento-cell">
-         <div class="bento-header" style="border-color: #9EFFBF;">
-          <div class="bento-title">04 - Animation System</div>
-        </div>
-        <div class="bento-content">
-          <p style="font-family: var(--font-ui); font-size: 0.9rem; margin-bottom: 20px;">Premium easing curves for snappy micro-interactions.</p>
-          <div style="background: var(--bg-primary); border: 1px solid var(--border-primary); padding: 20px; position: relative; overflow: hidden;">
-            <div style="font-family: var(--font-mono); font-size: 0.65rem; margin-bottom: 10px;">cubic-bezier(0.25, 1, 0.5, 1)</div>
-            <div style="height: 40px; background: rgba(163, 189, 106, 0.1); border: 1px solid var(--border-subtle); position: relative;">
-              <div style="width: 4px; height: 100%; background: var(--accent); position: absolute; left: 0; animation: moveRight 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;"></div>
-            </div>
-            <style> @keyframes moveRight { 0% { left: 0; } 50% { left: 90%; } 100% { left: 0; } } </style>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- REQUEST ACCESS FORM (NEW) -->
-    <h2 class="section-title">Request Access Form</h2>
-    <div class="tech-form-wrapper">
-      <!-- Corner Markers -->
-      <div class="corner-marker tl"></div>
-      <div class="corner-marker tr"></div>
-      <div class="corner-marker bl"></div>
-      <div class="corner-marker br"></div>
-
-      <div class="form-header">
-        <h3 class="form-title">REQUEST ACCESS</h3>
-        <p class="form-subtitle">Join the waitlist for early access to the complete design system</p>
-      </div>
-
-      <form onsubmit="event.preventDefault(); alert('Request sent (Demo)');">
-        <div class="form-group">
-          <label class="form-label">EMAIL ADDRESS</label>
-          <input type="email" class="form-input" placeholder="your@email.com">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">COMPANY NAME</label>
-          <input type="text" class="form-input" placeholder="Your Company">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">USE CASE</label>
-          <div class="checkbox-group">
-            <label class="checkbox-item">
-              <input type="checkbox" style="display:none;">
-              <div class="checkbox-box"></div>
-              <span class="checkbox-label">PRODUCT DESIGN</span>
-            </label>
-            <label class="checkbox-item">
-              <input type="checkbox" style="display:none;">
-              <div class="checkbox-box"></div>
-              <span class="checkbox-label">DEVELOPMENT</span>
-            </label>
-            <label class="checkbox-item">
-              <input type="checkbox" style="display:none;">
-              <div class="checkbox-box"></div>
-              <span class="checkbox-label">MARKETING</span>
-            </label>
-             <label class="checkbox-item">
-              <input type="checkbox" style="display:none;">
-              <div class="checkbox-box"></div>
-              <span class="checkbox-label">RESEARCH</span>
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn--cta" style="width:100%; justify-content: center; height: 50px; font-size: 1rem; margin-top: 20px;">Submit Request</button>
-      </form>
-    </div>
-
 
 
     </div> <!-- END TAB: UI BLOCKS -->
@@ -1343,9 +1045,9 @@ const html = `<!DOCTYPE html>
          const btn = document.getElementById('copyTokensBtn');
          const originalContent = btn.innerHTML;
          
-         btn.innerHTML = \`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D5B28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>\`;
-         btn.style.borderColor = '#2D5B28';
-         btn.style.backgroundColor = '#E1F0DA';
+         btn.innerHTML = \`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>\`;
+         btn.style.borderColor = '#34D399'; /* Success Green */
+         btn.style.backgroundColor = 'rgba(52, 211, 153, 0.1)';
          
          setTimeout(() => {
            btn.innerHTML = originalContent;
@@ -1358,5 +1060,5 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`;
 
-fs.writeFileSync('docs/design-system/HALO-design-system-v3.html', html);
-console.log('✓ Generated docs/design-system/HALO-design-system-v3.html (Full System Replaced)');
+fs.writeFileSync('docs/design-system/HALO-design-system-v2-experiment.html', html);
+console.log('✓ Generated docs/design-system/HALO-design-system-v2-experiment.html (V2 Experiment)');
