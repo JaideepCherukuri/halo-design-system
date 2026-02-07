@@ -15,10 +15,8 @@ export function useLiquidMetalScale(logoRef: RefObject<SVGSVGElement | null>) {
             const logoWidth = logoRef.current.getBoundingClientRect().width;
 
             // The inner area of the O letter is approximately 12% of the logo width
-            // The shader is 800px wide, we want it to fit inside the O
-            // Target width for shader = logoWidth * 0.12
-            // Scale = targetWidth / 800
-            const oLetterInnerWidth = logoWidth * 0.12;
+            // We increase this by 40% again from 0.168 to make it even larger (0.168 * 1.4 = 0.235)
+            const oLetterInnerWidth = logoWidth * 0.235;
             const newScale = oLetterInnerWidth / 800;
 
             setScale(newScale);
