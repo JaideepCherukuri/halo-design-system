@@ -2,7 +2,6 @@ import { StrictMode, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
-import { Agentation } from "agentation";
 import ErrorBoundary from "./components/ErrorBoundary";
 import "./index.css";
 
@@ -45,7 +44,6 @@ createRoot(document.getElementById("root")!).render(
           </Routes>
         </Suspense>
       </BrowserRouter>
-      <Agentation />
       <Analytics />
     </ErrorBoundary>
   </StrictMode>,
