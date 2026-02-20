@@ -496,15 +496,17 @@ export default function HomePage() {
                     </div>
                     <div className="footer-right">
                         <div className="footer-social">
-                            <span
+                            <a
+                                href="https://x.com/halofydotai"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="social-link"
-                                style={{ cursor: 'default', opacity: 0.5 }}
-                                aria-label="X (Twitter) - Coming Soon"
+                                aria-label="X (Twitter)"
                             >
                                 <XIcon />
-                            </span>
+                            </a>
                             <a
-                                href="https://www.linkedin.com/company/112079026"
+                                href="https://www.linkedin.com/company/halofy/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
