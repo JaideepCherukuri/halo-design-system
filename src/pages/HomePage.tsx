@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Dithering, LiquidMetal } from '@paper-design/shaders-react';
@@ -314,9 +313,9 @@ export default function HomePage() {
             {/* Fixed Header */}
             <header className="site-header">
                 <div className="halftone-overlay" aria-hidden="true" />
-                <Link to="/" className="header-brand">
+                <a href="https://x.com/halofydotai" target="_blank" rel="noopener noreferrer" className="header-brand">
                     <HeaderLogo />
-                </Link>
+                </a>
                 <nav className="header-nav">
                     <span
                         className="nav-link"
